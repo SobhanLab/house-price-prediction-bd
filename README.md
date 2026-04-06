@@ -1,13 +1,13 @@
 # 🏠 House Price Prediction (Bangladesh)
 
-This project predicts house prices in Bangladesh using Machine Learning.
+A Machine Learning project that predicts house prices in Bangladesh using XGBoost.
 
 ---
 
 ## 📊 Dataset
 
-* Bangladesh housing dataset (Kaggle)
-* Features include:
+* Source: https://www.kaggle.com/datasets/durjoychandrapaul/house-price-bangladesh
+* Real estate data including:
 
   * Bedrooms
   * Bathrooms
@@ -19,57 +19,79 @@ This project predicts house prices in Bangladesh using Machine Learning.
 
 ## ⚙️ Problem Statement
 
-Given house features, predict the estimated price in Bangladeshi Taka (BDT).
+Estimate the price of a house based on its features using supervised machine learning.
 
 ---
 
-## 🧠 Model Used
+## 🧠 Model
 
-* XGBoost Regressor
+* XGBoost Regressor (tuned)
 
 ---
 
 ## 📈 Performance
 
-* R² Score: **0.85**
+* R² Score: **0.849**
 
 ---
 
-## 🔧 Techniques Applied
+## 🔧 Techniques Used
 
-* Data Cleaning (currency format removal)
-* Handling missing values
-* Outlier Removal (IQR method)
+* Data Cleaning (currency formatting)
+* Missing value handling
+* Outlier Removal (IQR)
 * Log Transformation
 * One-Hot Encoding
-* Model Tuning
+* Model tuning
 
 ---
 
-## 💾 Model File
+## 💾 Saved Model
 
-* `model.pkl` → saved trained model
-* Can be reused for prediction without retraining
-
----
-
-## 🚀 How to Run
-
-1. Clone the repository:
-   git clone https://github.com/your-username/house-price-prediction-bd.git
-
-2. Open notebook:
-   notebook.ipynb
-
-3. Run all cells
+* `model.pkl` → trained model for reuse
 
 ---
 
-## 🌐 Future Work
+## 🚀 Project Structure
 
-* Build a web app (Streamlit)
+```
+house-price-prediction-bd/
+│
+├── notebook.ipynb
+├── model.pkl
+├── app.py   (coming soon)
+└── README.md
+```
+
+---
+
+## ▶️ How to Run
+
+1. Clone this repo:
+
+```
+git clone https://github.com/SobhanLab/Learning_Python.git
+```
+
+2. Navigate to project folder:
+
+```
+cd Project/house-price-prediction-bd
+```
+
+3. Open notebook:
+
+```
+notebook.ipynb
+```
+
+---
+
+## 🌐 Future Improvements
+
+* Build Streamlit web app
 * Deploy model online
-* Improve accuracy with more data
+* Improve feature engineering
 
 ---
 
