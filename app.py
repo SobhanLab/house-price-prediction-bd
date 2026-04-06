@@ -5,17 +5,20 @@ import numpy as np
 # Load model
 model = pickle.load(open("model.pkl", "rb"))
 
+st.set_page_config(page_title="House Price Predictor", page_icon="🏠")
+
 st.title("🏠 House Price Prediction (BD)")
+st.write("Enter house details to estimate price")
 
-st.write("Enter house details:")
+# Inputs
+bedrooms = st.slider("Bedrooms", 1, 10, 3)
+bathrooms = st.slider("Bathrooms", 1, 10, 2)
+area = st.number_input("Floor Area (sqft)", 500, 10000, 1500)
 
-bedrooms = st.number_input("Bedrooms", min_value=1, max_value=10, value=3)
-bathrooms = st.number_input("Bathrooms", min_value=1, max_value=10, value=2)
-area = st.number_input("Area (sqft)", min_value=500, max_value=10000, value=1500)
-
+# Predict
 if st.button("Predict Price"):
-    data = np.array([[bedrooms, bathrooms, area]])
+    input_data = np.array([[bedrooms, bathrooms, area]])
     
-    prediction = model.predict(data)
+    prediction = model.predict(input_data)
     
     st.success(f"Estimated Price: {prediction[0]:,.0f} BDT")
