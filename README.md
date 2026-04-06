@@ -38,8 +38,8 @@ Estimate the price of a house based on its features using supervised machine lea
 ## 🔧 Techniques Used
 
 * Data Cleaning (currency formatting)
-* Missing value handling
-* Outlier Removal (IQR)
+* Handling missing values
+* Outlier Removal (IQR method)
 * Log Transformation
 * One-Hot Encoding
 * Model tuning
@@ -48,7 +48,7 @@ Estimate the price of a house based on its features using supervised machine lea
 
 ## 💾 Saved Model
 
-* `model.pkl` → trained model for reuse
+* `model.pkl` → trained model for reuse without retraining
 
 ---
 
@@ -59,39 +59,53 @@ house-price-prediction-bd/
 │
 ├── notebook.ipynb
 ├── model.pkl
-├── app.py   (coming soon)
+├── app.py
+├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## ▶️ How to Run
+## ▶️ How to Run Locally
 
-1. Clone this repo:
-
-```
-git clone https://github.com/SobhanLab/Learning_Python.git
-```
-
-2. Navigate to project folder:
+1. Clone the repository:
 
 ```
-cd Project/house-price-prediction-bd
+git clone https://github.com/SobhanLab/house-price-prediction-bd.git
 ```
 
-3. Open notebook:
+2. Navigate to the project folder:
 
 ```
-notebook.ipynb
+cd house-price-prediction-bd
+```
+
+3. Install dependencies:
+
+```
+pip install -r requirements.txt
+```
+
+4. Run the app:
+
+```
+streamlit run app.py
 ```
 
 ---
 
-## 🌐 Future Improvements
+## 🌐 Live Demo
 
-* Build Streamlit web app
-* Deploy model online
-* Improve feature engineering
+(Coming soon after deployment)
+
+---
+
+## 🌱 Future Improvements
+
+* Add full feature input (City, Location)
+* Improve prediction accuracy with more data
+* Enhance UI/UX of the web app
+* Deploy publicly for real users
 
 ---
 
