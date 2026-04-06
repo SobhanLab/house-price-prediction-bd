@@ -13,18 +13,18 @@ df['Price_in_taka'] = df['Price_in_taka'].str.replace('৳', '')
 df['Price_in_taka'] = df['Price_in_taka'].str.replace(',', '')
 df['Price_in_taka'] = df['Price_in_taka'].astype(float)
 
-# Drop unnecessary
+# Clean
 df = df.dropna()
 df = df.drop_duplicates()
 df = df.drop('Title', axis=1)
 
-# Prepare data
+# Prepare
 X = df.drop('Price_in_taka', axis=1)
 y = np.log1p(df['Price_in_taka'])
 
 X = pd.get_dummies(X, drop_first=True)
 
-# Train model
+# Train
 model = XGBRegressor(n_estimators=200)
 model.fit(X, y)
 
