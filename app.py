@@ -1,25 +1,41 @@
 import streamlit as st
-import pickle
+import pandas as pd
 import numpy as np
-import os
-
-model_path = os.path.join(os.path.dirname(__file__), "model.pkl")
-model = pickle.load(open(model_path, "rb"))
-
-st.set_page_config(page_title="House Price Predictor", page_icon="🏠")
+from xgboost import XGBRegressor
 
 st.title("🏠 House Price Prediction (BD)")
-st.write("Enter house details to estimate price")
 
-# Inputs
+# Load dataset
+df = pd.read_csv("https://raw.githubusercontent.com/SobhanLab/house-price-prediction-bd/main/house_price_bd.csv")
+
+# Clean price
+df['Price_in_taka'] = df['Price_in_taka'].str.replace('৳', '')
+df['Price_in_taka'] = df['Price_in_taka'].str.replace(',', '')
+df['Price_in_taka'] = df['Price_in_taka'].astype(float)
+
+# Drop unnecessary
+df = df.dropna()
+df = df.drop_duplicates()
+df = df.drop('Title', axis=1)
+
+# Prepare data
+X = df.drop('Price_in_taka', axis=1)
+y = np.log1p(df['Price_in_taka'])
+
+X = pd.get_dummies(X, drop_first=True)
+
+# Train model
+model = XGBRegressor(n_estimators=200)
+model.fit(X, y)
+
+# UI
 bedrooms = st.slider("Bedrooms", 1, 10, 3)
 bathrooms = st.slider("Bathrooms", 1, 10, 2)
-area = st.number_input("Floor Area (sqft)", 500, 10000, 1500)
+area = st.number_input("Area", 500, 10000, 1500)
 
-# Predict
-if st.button("Predict Price"):
+if st.button("Predict"):
     input_data = np.array([[bedrooms, bathrooms, area]])
+    pred = model.predict(input_data)
+    price = np.expm1(pred[0])
     
-    prediction = model.predict(input_data)
-    
-    st.success(f"Estimated Price: {prediction[0]:,.0f} BDT")
+    st.success(f"Estimated Price: {price:,.0f} BDT")
