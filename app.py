@@ -18,7 +18,7 @@ st.write("Enter house details to estimate price")
 # 4. Load Pipeline
 @st.cache_resource
 def load_model():
-    return pickle.load(open("pipeline.pkl", "rb"))
+    return pickle.load(open("app.pkl", "rb"))
 
 pipeline = load_model()
 
