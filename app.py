@@ -5,7 +5,7 @@ from xgboost import XGBRegressor
 
 st.title("🏠 House Price Prediction (BD)")
 
-df = pd.read_csv("https://raw.githubusercontent.com/SobhanLab/house-price-prediction-bd/main/house_price_bd.csv")
+df = pd.read_csv("house_price_bd.csv")
 
 df['Price_in_taka'] = df['Price_in_taka'].str.replace('৳', '')
 df['Price_in_taka'] = df['Price_in_taka'].str.replace(',', '')
