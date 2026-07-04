@@ -96,7 +96,7 @@ streamlit run app.py
 
 ## 🌐 Live Demo
 
-(Coming soon after deployment)
+* Link: https://bdhouse-price-prediction.streamlit.app
 
 ---
 
